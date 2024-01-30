@@ -31,7 +31,7 @@ Une fois cette ontologie chargée dans [Jena](https://jena.apache.org), voici qu
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -55,7 +55,7 @@ OPTIONAL {?med ns:StatutBdm ?statut .}
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -73,7 +73,7 @@ WHERE {
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -97,7 +97,7 @@ D'abord on cherche le numéro du Paracétamol :
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -116,7 +116,7 @@ Puis on cherche 1à médicament contenant du Paracétamol
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -137,7 +137,7 @@ LIMIT 10
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -157,7 +157,7 @@ WHERE {
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -178,7 +178,7 @@ FILTER (?commercialisation = "Commercialisée") .
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -203,7 +203,7 @@ On crée une règle pour créer une classe de Médicament nommée MedicamentOral
 
 Règles :
 
-```
+```sparql
 @prefix ns: <http://example.org/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -236,7 +236,7 @@ On crée un erègle pour créer une sous classe de autorisation pour définir si
 
 Règles :
 
-```
+```sparql
 [rule2: (?auth rdf:type ns:Autorisation) (?auth ns:StatutAdminAMM "Autorisation abrogée") ->  (?auth rdf:type ns:AutorisationNonValide)]
 [rule3: (?auth rdf:type ns:Autorisation) (?auth ns:StatutAdminAMM "Autorisation archivée") ->  (?auth rdf:type ns:AutorisationNonValide)]
 [rule4: (?auth rdf:type ns:Autorisation) (?auth ns:StatutAdminAMM "Autorisation retirée") ->  (?auth rdf:type ns:AutorisationNonValide)]
@@ -245,7 +245,7 @@ Règles :
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -270,14 +270,14 @@ On crée deux règles, une pour dire si une autorisation valide a plus de 20 ans
 
 Règle :
 
-```
+```sparql
 [rule6: (?auth rdf:type ns:AutorisationValide) (?auth ns:DateAMM ?date) lessThan(?date, 2004) ->  (?auth rdf:type ns:VieilleAutorisation)]
 [rule7: (?med rdf:type ns:Medicament) (?med ns:AObtenuAutorisation ?auth) (?auth rdf:type ns:VieilleAutorisation) ->  (?med rdf:type ns:VieuxMedoc)]
 ```
 
 Requête :
 
-```
+```sparql
 PREFIX ns: <http://example.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -298,7 +298,7 @@ WHERE {
 
 ## Récapitulatif des règles Jena
 
-```
+```sparql
 @prefix ns: <http://example.org/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
